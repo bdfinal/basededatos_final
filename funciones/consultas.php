@@ -19,7 +19,13 @@ public function projectId($id){
     return $res;
     
 }
-
+public function tareasGet(){
+    $qry = 'SELECT * FROM tareas';
+    $rt = new mysqlfunciones;
+    $res = $rt->ejecutar($qry);
+    return $res;
+    
+}
 
 
 
