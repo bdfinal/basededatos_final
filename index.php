@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
    <?php include_once('includes/header.php')?>
-    <title>Document</title>
+    <title>My Document</title>
 </head>
 <body>
 <?php include("includes/conexion.php") ;  ?>
