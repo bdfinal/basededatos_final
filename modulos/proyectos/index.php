@@ -36,8 +36,9 @@ $project = $consulta->projectGet();
       <div class="card-body">
        <h5 class="card-title text-center"><a href="all_project.php"><?php echo $mostrar["nombre_proyecto"]?></a></h5>
         <?php if($mostrar["id_proyecto"]==1){?>
-          <a id="a" href="../tareas/index.php" class="a-style btn btn-dark"><span class="fas fa-pencil-alt"></span> Ver tareas</a>
-          <a id="a" href="modulos/usuarios/index.php" class="a-style btn btn-dark float-left"><span class="fa fa-plus-circle"></span> Agregar tareas</a>
+         
+          <a id="a_admin" value="<?php echo $_SESSION["id"];?>" href="ver_tareas.php?id=<?php echo $mostrar['id_proyecto']; ?>" class="a-style btn btn-dark"><span class="fas fa-pencil-alt"></span> Ver tareas</a>
+          <a id="a_all" href="modulos/usuarios/index.php" class="a-style btn btn-dark float-left"><span class="fa fa-plus-circle"></span> Agregar tareas</a>
 
           <?php } else {?>
             <a id="a" href="modulos/usuarios/index.php" class="a-stile btn btn-dark"><span class="fas fa-pencil-alt"></span> Ver tareas</a>
@@ -46,7 +47,15 @@ $project = $consulta->projectGet();
     </div>
   </div>
         <?php }?>
- 
+ <script>
+
+ function valUser() {
+   if($('#user_level').val() == '1') {
+      $('#a_admin').prop('disabled', true);
+      $('#a_all').prop('disabled', true);
+   }
+}
+ </script>
 
        
 
