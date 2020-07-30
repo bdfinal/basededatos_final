@@ -28,8 +28,8 @@ $project = $consulta->projectGet();
   <div class="container mt-5">
   <div class="row">
   <div class="col-sm-12">
-  <a href="../../cerrarsesion.php" class="btn btn-danger float-right mb-5">Cerrar Sesion</a>
-  <a href="index.php" class="btn btn-primary float-left mb-5">Volver a la página anterior</a>
+  <a href="../../cerrarsesion.php" class="btn btn-danger float-right mb-5"><span class="fas fa-sign-out-alt"></span> Cerrar Sesion</a>
+  <a href="index.php" class="btn btn-primary float-left mb-5"><span class="fas fa-backspace"> Volver a la página anterior</a>
   </div>
   <div class="col-sm-12">
       <div class="table-responsive">
@@ -46,8 +46,8 @@ $project = $consulta->projectGet();
         ?>
         <tr>
         <th><?php echo$mostrar['nombre_proyecto'];?></th>
-        <td><a href="fedicion_usuario.php?id=<?php echo $mostrar['id_proyecto']; ?>">Editar</a>
-        <a href="eliminar_usuarios.php?id=<?php echo $mostrar['id_proyecto']; ?>">Eliminar</a>
+        <td><a href="edit_project.php?id=<?php echo $mostrar['id_proyecto']; ?>">Editar</a>
+        <a href="delete_project.php?id=<?php echo $mostrar['id_proyecto']; ?>">Eliminar</a>
     
     </td>
        

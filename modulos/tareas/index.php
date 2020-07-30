@@ -6,7 +6,7 @@ use funciones\mysqlfunciones;
 use consultas_sql\consultas;
 $ejecutar = new mysqlfunciones();
 $consulta= new consultas();
-$usr = $consulta->usr();
+//$usr = $consulta->usr();
 $session = $ejecutar->usuarioActivo();
  
 ?>
@@ -17,7 +17,7 @@ $session = $ejecutar->usuarioActivo();
   
    ?>
 
-    <title>Document</title>
+   
 </head>
 <body>
     <?php

@@ -39,11 +39,11 @@ $project = $consulta->projectGet();
       <div class="card-body">
        <h5 class="card-title text-center"><a href="all_project.php"><?php echo $mostrar["nombre_proyecto"]?></a></h5>
         <?php if($mostrar["id_proyecto"]==1){?>
-          <a id="a" href="modulos/usuarios/index.php" class="a-style btn btn-dark">Ir a tareas</a>
+          <a id="a" href="modulos/usuarios/index.php" class="a-style btn btn-dark"><span class="fas fa-pencil-alt"></span> Ir a tareas</a>
           <a id="a" href="modulos/usuarios/index.php" class="a-style btn btn-dark float-left"><span class="fa fa-plus-circle"></span> Agregar tareas</a>
 
           <?php } else {?>
-          <a id="a" href="modulos/usuarios/index.php" class="a-stile btn btn-dark float-left">Agregar tareas</a>
+            <a id="a" href="modulos/usuarios/index.php" class="a-stile btn btn-dark"><span class="fas fa-pencil-alt"></span> Ir a tareas</a>
         <?php } ?>
       </div>
     </div>
