@@ -20,7 +20,13 @@ public function projectId($id){
     
 }
 
-
+public function usr(){
+    $qry = 'SELECT * FROM usuarios';
+    $rt = new mysqlfunciones;
+    $res = $rt->ejecutar($qry);
+    return $res;
+    
+}
 
 
 

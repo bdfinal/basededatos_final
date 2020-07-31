@@ -5,7 +5,6 @@
     <title>Pandémicos!!!</title>
 </head>
 <body>
-<?php include("includes/conexion.php") ;  ?>
 <div class="container">
     <div class="row justify-content-center align-items-center" style="height:100vh">
     <div class="col-4">
