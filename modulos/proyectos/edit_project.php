@@ -6,7 +6,7 @@
  use consultas_sql\consultas;
  $ejecutar = new mysqlfunciones();
  $consultas = new consultas();
- //$session = $ejecutar->usuarioActivo();
+ $session = $ejecutar->usuarioActivo();
  $id = $_GET['id'];
  $project = $consultas->projectId($id);
 ?>
