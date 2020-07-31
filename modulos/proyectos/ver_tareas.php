@@ -6,8 +6,9 @@ use funciones\mysqlfunciones;
 use consultas_sql\consultas;
 $ejecutar = new mysqlfunciones();
 $consulta= new consultas();
-
-$project = $consulta->projectGet();
+$id=$_GET["id"];
+$detalleA = $consulta->detalleIdAsignador($id);
+$detallea = $consulta->detalleIdResponsable($id);
  
 ?>
 <!DOCTYPE html>
@@ -20,15 +21,11 @@ $project = $consulta->projectGet();
     <title>Document</title>
 </head>
 <body>
-    <?php
-   include("../../includes/conexion.php")
-   
-    ?>
-  
+ 
   <div class="container mt-5">
   <div class="row">
   <div class="col-sm-12">
-  <a href="../../cerrarsesion.php" class="btn btn-danger float-right mb-5"><span class="fas fa-sign-out-alt"></span> Cerrar Sesion</a>
+  <a href="../../logout.php" class="btn btn-danger float-right mb-5"><span class="fas fa-sign-out-alt"></span> Cerrar Sesion</a>
   <a href="index.php" class="btn btn-primary float-left mb-5"><span class="fas fa-backspace"> Volver a la página anterior</a>
   </div>
   <div class="col-sm-12">
@@ -36,20 +33,32 @@ $project = $consulta->projectGet();
       <table class="table table-stripped">
     <thead>
     <tr>    
-    <th> Nombre</th>
-    <th> Acciones</th>
+    <th> Tareas<span</th>
+    <th> Asignado por</th>
+    <th> Asignado a</th>
+    <th> Fecha asignado</th>
+    <th> Estado de la tarea</th>
     </tr>
     </thead>
     <tbody>
         <?php
-    while ($mostrar=mysqli_fetch_array($project)){ //array: nos trae un arreglo de datos por posiciones, //2: arreglo asociativo podemos ver los campos de los bd
+    while ($mostrar=mysqli_fetch_array($detalleA)){ //array: nos trae un arreglo de datos por posiciones, //2: arreglo asociativo podemos ver los campos de los bd
         ?>
         <tr>
-        <th><?php echo$mostrar['nombre_proyecto'];?></th>
-        <td><a href="edit_project.php?id=<?php echo $mostrar['id_proyecto']; ?>">Editar</a>
-        <a href="delete_project.php?id=<?php echo $mostrar['id_proyecto']; ?>">Eliminar</a>
+        <th><?php echo$mostrar['tarea'];?></th>
+        <th><?php echo$mostrar['asignador'];?></th>
+        <?php
+    while ($qry=mysqli_fetch_array($detallea)){ //array: nos trae un arreglo de datos por posiciones, //2: arreglo asociativo podemos ver los campos de los bd
+        ?>
+        <th><?php echo$qry['responsable'];?></th>
+        <?php
+    }
+        ?>
+        <th><?php echo$mostrar['fecha_asignacion'];?></th>
+        <th><?php echo$mostrar['estatus'];?></th>
+        
     
-    </td>
+    
        
         </tr>
         <?php

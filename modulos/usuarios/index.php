@@ -6,9 +6,9 @@ use funciones\mysqlfunciones;
 use consultas_sql\consultas;
 $ejecutar = new mysqlfunciones();
 $consulta= new consultas();
-//$usr = $consulta->usr();
+$usr = $consulta->usr();
 $session = $ejecutar->usuarioActivo();
- 
+//print_r($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="en">
