@@ -31,6 +31,7 @@ class mysqlfunciones{
             $_SESSION["id"] = $fila["id_usuario"];
             $_SESSION["nombre"] = $fila["nombre"];
             $_SESSION["estado"] = $fila["Estado"];
+            $_SESSION["id_rol"] = $fila["roles_id_rol"];
             $respuesta = 1;
         } else {
             $respuesta = 'La contraseña no coincide con el usuario';
