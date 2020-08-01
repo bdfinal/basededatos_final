@@ -3,14 +3,10 @@ include_once("../../funciones/bd.php");
 include_once("../../funciones/funciones.php");
 session_start();
 $usuario=$_SESSION["id"];
+echo $usuario;
 $rol=$_SESSION["id_rol"];
 echo $rol;
 //echo $usuario;
-$consulta = "select t.*, u.nombre_usr as nombre
-            from tareas t
-            inner join usuarios u on t.usuario_id_usuario=u.id_usuario
-            where u.id_usuario='$usuario'";
-            $resultado = mysqli_query($mysqli, $consulta);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,9 +26,9 @@ $consulta = "select t.*, u.nombre_usr as nombre
       if ($rol == 2){?>
   <a href="../../cerrarsesion.php" class="btn btn-danger float-right mb-5">Cerrar Sesion</a>
   <a href="tareas_form.php" class="btn btn-primary float-left mb-5">Crear tarea</a>
-  <a href="tareas_form.php" class="btn btn-primary float-left mb-5">Asignar tarea</a>
   </div>
       <?php }else{ 
+          echo "NO TIENE ACCESO PARA CREAR TAREAS";
           ?>
   <a href="../../cerrarsesion.php" class="btn btn-danger float-right mb-5">Cerrar Sesion</a>
       <?php } ?>
@@ -48,7 +44,11 @@ $consulta = "select t.*, u.nombre_usr as nombre
     </thead>
     <tbody>
         <?php
-            
+            $consulta = "select t.*, u.nombre_usr as nombre
+            from tareas t
+            inner join usuarios u on t.usuario_id_usuario=u.id_usuario
+            where u.id_usuario='$usuario'";
+            $resultado = mysqli_query($mysqli, $consulta);
             while($fila = mysqli_fetch_array($resultado))            
             {  
         ?>

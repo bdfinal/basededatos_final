@@ -59,8 +59,16 @@ public function usr(){
     return $res;
     
 }
-
- }
+public function tareasId($id){
+    $qry = 'SELECT * FROM tareas
+    WHERE id_tarea='.$id;
+    $rt = new mysqlfunciones;
+    $res = $rt->ejecutar($qry);
+    return $res;
+    
+}
+ 
+}
 
 
 ?>
