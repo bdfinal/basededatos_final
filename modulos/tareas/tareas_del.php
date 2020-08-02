@@ -1,9 +1,12 @@
 <?php
-require_once '../../funciones/bd.php';
-    $id = $_GET['id'];
+include_once("../../funciones/funciones.php");
+include_once("../../funciones/bd.php");
+
+use funciones\mysqlfunciones;
+$ejecutar = new mysqlfunciones();
+    $id = $_GET['id_tarea'];
     
-    $consulta = "delete from tareas where id_tarea = $id ";
-    mysqli_query($mysqli, $consulta);
-    header('location: index.php');
+    $qry = "delete from tareas where id_tarea = $id ";
+    $ejecucion = $ejecutar->ejecutar($qry);
 
 ?>

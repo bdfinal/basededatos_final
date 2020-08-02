@@ -1,12 +1,18 @@
 <?php
-include_once("../../funciones/bd.php");
-include_once("../../funciones/funciones.php");
-session_start();
-$usuario=$_SESSION["id"];
-echo $usuario;
-$rol=$_SESSION["id_rol"];
-echo $rol;
-//echo $usuario;
+ include_once("../../funciones/funciones.php");
+ include_once("../../funciones/bd.php");
+ include_once("../../funciones/consultas.php");
+ session_start();
+ use funciones\mysqlfunciones;
+ use consultas_sql\consultas;
+ $ejecutar = new mysqlfunciones();
+ $consultas = new consultas();
+ $session = $ejecutar->usuarioActivo();
+ $usuario= $_SESSION["id"];
+ echo $usuario;
+ $tareas = $consultas->tareasGet();
+ $rol=$_SESSION["id_rol"];
+ echo $rol;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +34,6 @@ echo $rol;
   <a href="tareas_form.php" class="btn btn-primary float-left mb-5">Crear tarea</a>
   </div>
       <?php }else{ 
-          echo "NO TIENE ACCESO PARA CREAR TAREAS";
           ?>
   <a href="../../cerrarsesion.php" class="btn btn-danger float-right mb-5">Cerrar Sesion</a>
       <?php } ?>
@@ -44,20 +49,15 @@ echo $rol;
     </thead>
     <tbody>
         <?php
-            $consulta = "select t.*, u.nombre_usr as nombre
-            from tareas t
-            inner join usuarios u on t.usuario_id_usuario=u.id_usuario
-            where u.id_usuario='$usuario'";
-            $resultado = mysqli_query($mysqli, $consulta);
-            while($fila = mysqli_fetch_array($resultado))            
+            while($fila = mysqli_fetch_array($tareas))            
             {  
         ?>
         <tr>
             <td><?php echo $fila["nombre_tarea"]; ?></td>
             <td><?php echo $fila["fecha_creacion"]; ?></td>
             <td><?php echo $fila["nombre"]; ?></td>
-            <td><a href="tareas-edit.php?id=<?php echo $fila["id_tarea"]; ?>">Editar</a>
-            <a href="tareas-del.php?id=<?php echo $fila["id_tarea"]; ?>; ?>">Eliminar</a>
+            <td><a href="tareas_edit.php?id=<?php echo $fila["id_tarea"]; ?>">Editar</a>
+            <a href="tareas_del.php?id=<?php echo $fila["id_tarea"]; ?>; ?>">Eliminar</a>
             </td>
        </tr>
         <?php } ?>
