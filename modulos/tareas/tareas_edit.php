@@ -9,7 +9,7 @@
  $session = $ejecutar->usuarioActivo();
 
  $usuario= $_SESSION["id"]; 
- $id = $_GET['id_tarea'];
+ $id = $_GET['id'];
  $tareas = $consultas->tareasId($id);
 ?>
 <!DOCTYPE html>
@@ -19,9 +19,6 @@
     <title>Document</title>
 </head>
 <body>
-    <?php
-    include("../../includes/conexion.php")
-   ?>
    <div class="container mt-5">
    <div class="row">
    <div class="col-sm-12">
