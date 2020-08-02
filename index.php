@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
    <?php include_once('includes/header.php')?>
-    <title>Pandémicos!!!</title>
+    <title>login</title>
 </head>
 <body>
 <div class="container">
