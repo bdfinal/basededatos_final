@@ -45,7 +45,9 @@ public function detalleIdResponsable($id){
 
 
 public function tareasGet(){
-    $qry = 'SELECT * FROM tareas';
+    $qry = 'SELECT t.*, u.nombre_usr as usuario
+    FROM tareas t
+    INNER JOIN usuarios u on t.usuarios_id_usuario=u.id_usuario';
     $rt = new mysqlfunciones;
     $res = $rt->ejecutar($qry);
     return $res;
@@ -59,8 +61,24 @@ public function usr(){
     return $res;
     
 }
-
- }
+public function tareasId($id){
+    $qry = 'SELECT * FROM tareas
+    WHERE id_tarea='.$id;
+    $rt = new mysqlfunciones;
+    $res = $rt->ejecutar($qry);
+    return $res;
+    
+}
+public function logsId($id){
+    $qry = 'SELECT l.*, u.nombre_usr as nombre FROM logs l inner join usuarios u on l.responsable_log = u.id_usuario
+    WHERE responsable_log='.$id;
+    $rt = new mysqlfunciones;
+    $res = $rt->ejecutar($qry);
+    return $res;
+    
+}
+ 
+}
 
 
 ?>
