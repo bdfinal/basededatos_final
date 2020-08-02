@@ -36,7 +36,8 @@
          <input type="text" name="nombre_tarea" id="nombre_tarea" class="form-control" required value="<?php echo $fila["nombre_tarea"]?>"/>
      </div>
       <div class="form-group">
-      <input type="text" name="fecha_creacion" id="fecha_creacion" class="form-control" required value="<?php echo $fila["fecha_creacion"]?>"/>
+      <label class="left full">Fecha</label>
+      <input type="date" name="fecha_creacion" id="fecha_creacion" class="form-control" required value="<?php echo $fila["fecha_creacion"]?>"/>
       </div> 
     <div class="form-group">
     <input type="submit" value="Guardar" class="btn btn-success">
