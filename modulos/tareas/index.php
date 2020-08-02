@@ -55,7 +55,7 @@
         <tr>
             <td><?php echo $fila["nombre_tarea"]; ?></td>
             <td><?php echo $fila["fecha_creacion"]; ?></td>
-            <td><?php echo $fila["usuarios_id_usuario"]; ?></td>
+            <td><?php echo $fila["nombre"]; ?></td>
             <td><a href="tareas_edit.php?id=<?php echo $fila["id_tarea"]; ?>">Editar</a>
             <a href="tareas_del.php?id=<?php echo $fila["id_tarea"]; ?>; ?>">Eliminar</a>
             </td>
