@@ -45,7 +45,9 @@ public function detalleIdResponsable($id){
 
 
 public function tareasGet(){
-    $qry = 'SELECT * FROM tareas';
+    $qry = 'SELECT t.*, u.nombre_usr as usuario
+    FROM tareas t
+    INNER JOIN usuarios u on t.usuarios_id_usuario=u.id_usuario';
     $rt = new mysqlfunciones;
     $res = $rt->ejecutar($qry);
     return $res;
