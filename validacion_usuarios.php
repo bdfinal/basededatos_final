@@ -18,7 +18,7 @@ include_once("funciones/bd.php");
     }else{
         $respuesta = $ejecutar-> usuarioExiste($usuario,$password);
         if($respuesta == 1){
-            header('Location: modulos/usuarios/index.php');
+            header('Location: pag_inicio.php');
           
         }
         else{
