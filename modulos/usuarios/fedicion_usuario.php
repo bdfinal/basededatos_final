@@ -8,25 +8,22 @@
  use funciones\mysqlfunciones;
  use consultas_sql\consultas;
 
-
  $ejecutar = new mysqlfunciones();
- $consultas = new consultas();
- $session = $ejecutar->usuarioActivo();
- $id_usuario = $_GET['id'];
- $edicion = $consultas->editUsr($id_usuario);
+$consulta = new consultas();
 
+ $rol = $consulta->rol();
+ $id_usuario = $_GET['id'];
+ $edicion = $consulta->editUsr($id_usuario);
+ $session = $ejecutar->usuarioActivo();
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
    <?php include("../../includes/header.php")?>
-    <title>Document</title>
+    <title>Editar Usuario</title>
 </head>
 <body>
-    <?php
-    include("../../includes/conexion.php")
-   ?>
    <div class="container mt-5">
    <div class="row">
    <div class="col-sm-12">
@@ -46,6 +43,16 @@
         <div class="form-group">
         <label class="left full">Contraseña</label>
         <input type="password" name="contraseña" id="contraseña" class="form-control" required placeholder="Ingresa una contraseña nueva" />
+        </div>
+        <div class="form-group">
+        <label class="left full">Rol</label>
+        <select name="id_rol" id="id_rol" class="form-control"required value="<?php echo$fila["nombre_rol"]?>">
+        <option value = "0">Selecciona una opción</option>
+       <?php
+        while ($qry=mysqli_fetch_array($rol )){ ?>      
+           <option value = "<?php echo $qry["id_rol"];?>"><?php echo $qry["nombre_rol"]?></option>
+           <?php }?>
+        </select>
         </div>   
     <div class="form-group">
     <input type="submit" value="Guardar" class="btn btn-success">

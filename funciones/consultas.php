@@ -55,7 +55,7 @@ public function tareasGet(){
 }
 
 public function usr(){
-    $qry = 'SELECT * FROM usuarios';
+    $qry = 'SELECT u.*, r.nombre_rol FROM usuarios u LEFT JOIN roles r on u.roles_id_rol = r.id_rol ';
     $rt = new mysqlfunciones;
     $res = $rt->ejecutar($qry);
     return $res;
@@ -69,15 +69,38 @@ public function tareasId($id){
     return $res;
     
 }
+<<<<<<< Updated upstream
 public function logsId($id){
     $qry = 'SELECT l.*, u.nombre_usr as nombre FROM logs l inner join usuarios u on l.responsable_log = u.id_usuario
     WHERE responsable_log='.$id;
+=======
+public function rol(){
+    $qry = 'SELECT * FROM roles';
+    $rt = new mysqlfunciones;
+    $res = $rt->ejecutar($qry);
+    return $res;
+    
+}
+public function editUsr($id){
+    $qry = 'SELECT * FROM usuarios 
+    WHERE id_usuario='.$id;
+    $rt = new mysqlfunciones;
+    $res = $rt->ejecutar($qry);
+    return $res;
+    
+}
+
+public function editrol($id){
+    $qry = 'SELECT * FROM roles 
+    WHERE id_rol='.$id;
+>>>>>>> Stashed changes
     $rt = new mysqlfunciones;
     $res = $rt->ejecutar($qry);
     return $res;
     
 }
  
+
 }
 
 
