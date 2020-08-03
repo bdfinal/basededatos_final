@@ -42,7 +42,13 @@ public function detalleIdResponsable($id){
     
 }
 
-
+public function logsId($id){
+    $qry = 'SELECT l.*, u.nombre_usr as nombre FROM logs l inner join usuarios u on l.responsable_log = u.id_usuario
+    WHERE responsable_log='.$id;
+     $rt = new mysqlfunciones;
+     $res = $rt->ejecutar($qry);
+     return $res;
+}
 
 public function tareasGet(){
     $qry = 'SELECT t.*, u.nombre_usr as usuario
