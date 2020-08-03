@@ -93,7 +93,8 @@ public function editrol($id){
     return $res;
     
 }
- 
+
+
 
 }
 
