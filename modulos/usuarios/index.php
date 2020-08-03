@@ -17,7 +17,7 @@ $session = $ejecutar->usuarioActivo();
   
    ?>
 
-    <title>Document</title>
+    <title>Usuarios</title>
 </head>
 <body>
  
@@ -46,7 +46,7 @@ $session = $ejecutar->usuarioActivo();
         <tr>
         <th><?php echo$mostrar['nombre_usr'];?></th>
         <th><?php echo$mostrar['correo_usr'];?></th>
-        <th><?php echo$mostrar['roles_id_rol'];?></th>
+        <th><?php echo$mostrar['nombre_rol'];?></th>
         <td><a href="fedicion_usuario.php?id=<?php echo $mostrar['id_usuario']; ?>">Editar</a>
         <a href="eliminar_usuarios.php?id=<?php echo $mostrar['id_usuario']; ?>">Eliminar</a>
     </td>
