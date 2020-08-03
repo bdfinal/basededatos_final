@@ -42,7 +42,13 @@ public function detalleIdResponsable($id){
     
 }
 
-
+public function logsId($id){
+    $qry = 'SELECT l.*, u.nombre_usr as nombre FROM logs l inner join usuarios u on l.responsable_log = u.id_usuario
+    WHERE responsable_log='.$id;
+     $rt = new mysqlfunciones;
+     $res = $rt->ejecutar($qry);
+     return $res;
+}
 
 public function tareasGet(){
     $qry = 'SELECT t.*, u.nombre_usr as usuario
@@ -69,11 +75,6 @@ public function tareasId($id){
     return $res;
     
 }
-<<<<<<< Updated upstream
-public function logsId($id){
-    $qry = 'SELECT l.*, u.nombre_usr as nombre FROM logs l inner join usuarios u on l.responsable_log = u.id_usuario
-    WHERE responsable_log='.$id;
-=======
 public function rol(){
     $qry = 'SELECT * FROM roles';
     $rt = new mysqlfunciones;
@@ -93,7 +94,6 @@ public function editUsr($id){
 public function editrol($id){
     $qry = 'SELECT * FROM roles 
     WHERE id_rol='.$id;
->>>>>>> Stashed changes
     $rt = new mysqlfunciones;
     $res = $rt->ejecutar($qry);
     return $res;
