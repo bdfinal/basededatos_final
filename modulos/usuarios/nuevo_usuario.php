@@ -8,11 +8,10 @@ $ejecutar = new mysqlfunciones();
 $nombre =$_REQUEST["nombre"];
 $correo = $_REQUEST["correo"];
 $password = $_REQUEST["contraseña"];
-$log_id=$_SESSION["id"];
-$log_name=$_SESSION["nombre"];
+$id_rol = $_REQUEST["id_rol"];
 
-$qry= "INSERT INTO usuarios (nombre_usr,correo_usr, password_usr) 
-VALUES ('$nombre', '$correo', '$password')";
+$qry= "INSERT INTO usuarios (nombre_usr, correo_usr, password_usr, roles_id_rol) 
+VALUES ('$nombre', '$correo', '$password','$id_rol')";
 
 $ejecucion = $ejecutar->ejecutar($qry);
 

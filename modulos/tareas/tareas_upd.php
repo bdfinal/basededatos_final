@@ -14,7 +14,7 @@ $usuario =$_POST["usuarios_id_usuario"];
 $qry= "UPDATE tareas SET
 nombre_tarea='$nombre',
 fecha_creacion='$fecha',
-usuarios_id_usuario='$usuarios_id_usuario'
+usuarios_id_usuario='$usuario'
 WHERE id_tarea='$id'";
 $ejecucion = $ejecutar->ejecutar($qry);
 

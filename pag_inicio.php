@@ -66,7 +66,7 @@ $logs = $consulta->logsId($id_log);
 <div class="container mt-5">
   <div class="row">
   <div class="col-sm-12">
-  <a href="../../logout.php" class="btn btn-danger float-right mb-5"><span class="fas fa-sign-out-alt"></span> Cerrar Sesion</a>
+  <a href="logout.php" class="btn btn-danger  mb-5"><span class="fas fa-sign-out-alt"></span> Cerrar Sesion</a>
 
       
   <div class="col-sm-12">
