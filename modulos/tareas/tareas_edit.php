@@ -29,7 +29,7 @@
      <div class="form-group">
          <label class="left full">Nombre</label>
          <input type="hidden" name="usuarios_id_usuario" id="usuarios_id_usuario" value="<?php echo $usuario; ?>" class="form-control" />
-         <input type="hidden" class="form-control" name="id_tarea" id="id_tarea"  value="<?php echo $fila['id_tarea']; ?>">
+         <input type="hidden" class="form-control" name="id_tarea" id="id_tarea"  value="<?php echo $id; ?>">
          <input type="text" name="nombre_tarea" id="nombre_tarea" class="form-control" required value="<?php echo $fila["nombre_tarea"]?>"/>
      </div>
       <div class="form-group">
