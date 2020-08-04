@@ -9,11 +9,11 @@
  $consultas = new consultas();
  $session = $ejecutar->usuarioActivo();
  $usuario= $_SESSION["id"];
- //echo $usuario;
+ $id_log=$_SESSION["id"];
  $tareas = $consultas->tareasGet();
  $rol=$_SESSION["id_rol"];
 
- print_r($rol);
+ 
  
 //echo $rol;
 ?>
@@ -27,7 +27,7 @@
 </head>
 <body>
  
-  
+<?php include("../../includes/nav.php")?>
   <div class="container mt-5">
   <div class="row">
   <div class="col-sm-12">
@@ -35,8 +35,8 @@
       <?php 
       
       if ($rol == 2){?>
-  <a href="../../logout.php" class="btn btn-danger float-right mb-5">Cerrar Sesion</a>
-  <a href="tareas_form.php" class="btn btn-primary float-left mb-5">Crear tarea</a>
+  <a href="../../logout.php" class="btn btn-danger float-right mb-5"><span class="fas fa-sign-out-alt"> Cerrar Sesion</a>
+  <a href="tareas_form.php" class="btn btn-primary float-left mb-5"><span class="fas fa-plus-circle"> Crear tarea</a>
   </div>
       <?php }else{ 
           ?>

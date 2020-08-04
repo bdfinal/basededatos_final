@@ -6,8 +6,11 @@ use funciones\mysqlfunciones;
 use consultas_sql\consultas;
 $ejecutar = new mysqlfunciones();
 $consulta= new consultas();
-$project = $consulta->projectGet();
+$id = $_GET["id"];
+$project = $consulta->projectGet($id);
 $session = $ejecutar->usuarioActivo();
+
+$id_log=$_SESSION["id"];
 $val_usr=$_SESSION["id_rol"];
 //print_r($_SESSION);
 ?>
@@ -21,12 +24,12 @@ $val_usr=$_SESSION["id_rol"];
     <title>Proyectos</title>
 </head>
 <body>
-  
+  <?php include("../../includes/nav.php")?>
   <div class="container mt-5">
   <div class="row">
   <div class="col-sm-12">
   <a href="../../logout.php" class="btn btn-danger float-right mb-5"><span class="fas fa-sign-out-alt"></span> Cerrar Sesion</a>
-  <a href="formularios_usuarios.php" class="btn btn-primary float-left mb-5"><span class="fa fa-plus-circle"></span>  Nuevo</a>
+  <a href="all_project.php" class="btn btn-primary float-left mb-5"><span class="fas fa-eye"></span>  Ver todos los proyectos</a>
   </div>
   <div class="container">
 <div class="row">
@@ -35,15 +38,13 @@ $val_usr=$_SESSION["id_rol"];
        <div class="col-sm-4 mt-5">
     <div class="card">
       <div class="card-body">
-       <h5 class="card-title text-center"><a href="all_project.php"><?php echo $mostrar["nombre_proyecto"]?></a></h5>
-        <?php if($val_usr==2){?>
+       <h5 class="card-title text-center"><?php echo $mostrar["nombre_proyecto"]?></h5>
+     
          
-          <a  id="a_admin"  href="ver_tareas.php?id=<?php echo $mostrar['id_proyecto']; ?>" class="a-style btn btn-dark"><span class="fas fa-pencil-alt"></span> Ver tareas</a>
-          <a id="a_all" href="modulos/usuarios/index.php" class="a-style btn btn-dark float-left"><span class="fa fa-plus-circle"></span> Agregar tareas</a>
+          <a  id="a_admin"  href="ver_tareas.php?id=<?php echo $mostrar['id_proyecto']; ?>" class="a-style btn btn-dark"><span class="far fa-clipboard"></span> Ver tareas</a>
+          <a id="a_all" href="edit_project.php?id=<?php echo $mostrar['id_proyecto']?>" class="a-style btn btn-dark float-left"><span class="far fa-edit"></span> Editar proyecto</a>
 
-          <?php } else {?>
-            <a id="a_ll" href="ver_tareas.php?id=<?php echo $mostrar["id_proyecto"];?>" class="a-stile btn btn-dark"><span class="fas fa-pencil-alt"></span> Ver tareas</a>
-        <?php } ?>
+         
       </div>
     </div>
   </div>
