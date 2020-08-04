@@ -8,6 +8,7 @@ $ejecutar = new mysqlfunciones();
 $consulta= new consultas();
 $usr = $consulta->usr();
 $session = $ejecutar->usuarioActivo();
+$id_log=$_SESSION["id"];
  
 ?>
 <!DOCTYPE html>
@@ -20,7 +21,7 @@ $session = $ejecutar->usuarioActivo();
     <title>Document</title>
 </head>
 <body>
-   
+<?php include("../../includes/nav.php")?>
   
   <div class="container mt-5">
   <div class="row">
