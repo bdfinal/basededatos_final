@@ -8,6 +8,7 @@ $ejecutar = new mysqlfunciones();
 $consulta= new consultas();
 $rol = $consulta->rol();
 $session = $ejecutar->usuarioActivo();
+$id_log=$_SESSION["id"];
 //print_r($_SESSION);
 ?>
 <!DOCTYPE html>
@@ -20,13 +21,13 @@ $session = $ejecutar->usuarioActivo();
     <title>ROLES</title>
 </head>
 <body>
- 
+<?php include("../../includes/nav.php")?>
   
   <div class="container mt-5">
   <div class="row">
   <div class="col-sm-12">
-  <a href="../../index.php" class="btn btn-danger float-right mb-5">Cerrar Sesion</a>
-  <a href="formulario_roles.php" class="btn btn-primary float-left mb-5">Nuevo</a>
+  <a href="../../index.php" class="btn btn-danger float-right mb-5"><span class="fas fa-sign-out-alt"> Cerrar Sesion</a>
+  <a href="formulario_roles.php" class="btn btn-primary float-left mb-5"><span class="fas fa-plus-circle"> Nuevo rol</a>
   </div>
   <div class="col-sm-12">
       <div class="table-responsive">

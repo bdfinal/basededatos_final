@@ -8,7 +8,7 @@ $ejecutar = new mysqlfunciones();
 $consulta= new consultas();
 $session = $ejecutar->usuarioActivo();
 $id_log=$_SESSION["id"];
-$logs = $consulta->logsId($id_log);
+$logs = $consulta->logs();
 
 ?>
 
@@ -35,7 +35,7 @@ $logs = $consulta->logsId($id_log);
       <table class="table table-stripped">
     <thead>
     <tr>    
-        <th> Nombre de usuario</th>
+        <th>Nombre de usuario</th>
         <th>Acción realizada</th>
         <th>Descripción</th>
         <th>Fecha</th>
