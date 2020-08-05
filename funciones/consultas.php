@@ -136,6 +136,29 @@ public function editrol($id){
     return $res;
     
 }
+public function estatus7(){
+    $qry = 'SELECT id_estatus, nombre_estatus from estatus ';
+    $rt = new mysqlfunciones;
+    $res = $rt->ejecutar($qry);
+    return $res;
+    
+}
+public function editEstatus($id){
+    $qry = 'SELECT * FROM estatus 
+    WHERE id_estatus='.$id;
+    $rt = new mysqlfunciones;
+    $res = $rt->ejecutar($qry);
+    return $res;
+    
+}
+
+public function allEstatus(){
+    $qry = 'SELECT * FROM estatus';
+    $rt = new mysqlfunciones;
+    $res = $rt->ejecutar($qry);
+    return $res;
+    
+}
  
 
 
