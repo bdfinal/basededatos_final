@@ -4,12 +4,21 @@ namespace consultas_sql;
 use funciones\mysqlfunciones;
  class consultas{
      
-public function projectGet(){
-    $qry = 'SELECT * FROM proyectos';
+public function projectGet($id){
+    $qry ='SELECT l.*, u.*
+    FROM detalle l 
+    inner join proyectos u on l.proyectos_id_proyecto = u.id_proyecto
+    WHERE id_responsable=' .$id;
     $rt = new mysqlfunciones;
     $res = $rt->ejecutar($qry);
     return $res;
     
+}
+public function allProject(){
+    $qry='SELECT * FROM proyectos';
+    $rt = new mysqlfunciones;
+    $res = $rt->ejecutar($qry);
+    return $res;
 }
 public function projectId($id){
     $qry = 'SELECT * FROM proyectos
@@ -19,28 +28,30 @@ public function projectId($id){
     return $res;
     
 }
-public function detalleIdAsignador($id){
+public function detalleIdAsignador($id_p, $id_r){
     $qry="select s.*,  d.nombre_estatus as estatus, e.nombre_tarea as tarea, c.nombre_usr as asignador 
     from detalle s 
     left join usuarios c on c.id_usuario = s.id_asignador
 	left join estatus d on d.id_estatus = s.estatus_id_estatus
 	left join tareas e on e.id_tarea = s.tareas_id_tarea
-	where proyectos_id_proyecto =$id";
+	where proyectos_id_proyecto =$id_p AND id_responsable =$id_r";
     $base = new mysqlfunciones();
     $res = $base->ejecutar($qry);
     return $res;
     
 }
-public function detalleIdResponsable($id){
+
+public function detalleIdResponsable($id_p, $id_r){
     $qry="select s.*, c.nombre_usr as responsable
     from detalle s 
     left join usuarios c on c.id_usuario = s.id_responsable
-	where proyectos_id_proyecto=$id";
+	where proyectos_id_proyecto=$id_p and id_responsable =$id_r";
     $base = new mysqlfunciones();
     $res = $base->ejecutar($qry);
     return $res;
     
 }
+
 
 public function logsId($id){
     $qry = 'SELECT l.*, u.nombre_usr as nombre FROM logs l inner join usuarios u on l.responsable_log = u.id_usuario
@@ -49,7 +60,12 @@ public function logsId($id){
      $res = $rt->ejecutar($qry);
      return $res;
 }
-
+public function logs(){
+    $qry='SELECT l.*, u.nombre_usr as nombre FROM logs l inner join usuarios u on l.responsable_log = u.id_usuario';
+    $rt = new mysqlfunciones;
+    $res = $rt->ejecutar($qry);
+    return $res;
+}
 public function tareasGet(){
     $qry = 'SELECT t.*, u.nombre_usr as usuario
     FROM tareas t
@@ -75,8 +91,29 @@ public function tareasId($id){
     return $res;
     
 }
+public function tareasIdusr($id){
+    $qry = 'select s.*,  d.nombre_estatus as estatus, e.nombre_tarea as tarea, c.nombre_usr as asignador 
+    from detalle s 
+    left join usuarios c on c.id_usuario = s.id_asignador
+    left join estatus d on d.id_estatus = s.estatus_id_estatus
+    left join tareas e on e.id_tarea = s.tareas_id_tarea
+    where id_responsable='.$id;
+    $rt = new mysqlfunciones;
+    $res = $rt->ejecutar($qry);
+    return $res;
+    
+}
 public function rol(){
     $qry = 'SELECT * FROM roles';
+    $rt = new mysqlfunciones;
+    $res = $rt->ejecutar($qry);
+    return $res;
+    
+}
+public function estatus(){
+    $qry = 'select id_estatus
+    from estatus
+    where nombre_estatus="No iniciado" or "no iniciado"';
     $rt = new mysqlfunciones;
     $res = $rt->ejecutar($qry);
     return $res;
@@ -99,6 +136,7 @@ public function editrol($id){
     return $res;
     
 }
+
 
 
 

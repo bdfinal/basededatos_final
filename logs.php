@@ -8,9 +8,8 @@ $ejecutar = new mysqlfunciones();
 $consulta= new consultas();
 $session = $ejecutar->usuarioActivo();
 $id_log=$_SESSION["id"];
-$logs = $consulta->logsId($id_log);
+$logs = $consulta->logs();
 
-//print_r($_SESSION);
 ?>
 
 
@@ -36,16 +35,16 @@ $logs = $consulta->logsId($id_log);
       <table class="table table-stripped">
     <thead>
     <tr>    
-        <th> Nombre de usuario</th>
+        <th>Nombre de usuario</th>
         <th>Acción realizada</th>
         <th>Descripción</th>
         <th>Fecha</th>
     </tr>
     </thead>
     <tbody>
-    <?php
-           while($fila =  mysqli_fetch_array($logs)){
-            
+        <?php
+            while($fila = mysqli_fetch_array($logs))  {          
+              
         ?>
         <tr>
             <td><?php echo $fila["nombre"]; ?></td>
