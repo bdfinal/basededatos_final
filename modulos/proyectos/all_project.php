@@ -6,8 +6,9 @@ use funciones\mysqlfunciones;
 use consultas_sql\consultas;
 $ejecutar = new mysqlfunciones();
 $consulta= new consultas();
-
-$project = $consulta->projectGet();
+$session = $ejecutar->usuarioActivo();
+$id_log=$_SESSION["id"];
+$project = $consulta->allProject();
  
 ?>
 <!DOCTYPE html>
@@ -24,8 +25,8 @@ $project = $consulta->projectGet();
   <div class="container mt-5">
   <div class="row">
   <div class="col-sm-12">
-  <a href="../../cerrarsesion.php" class="btn btn-danger float-right mb-5"><span class="fas fa-sign-out-alt"></span> Cerrar Sesion</a>
-  <a href="index.php" class="btn btn-primary float-left mb-5"><span class="fas fa-backspace"> Volver a la página anterior</a>
+  <a href="insert_project.php" class="btn btn-primary float-right mb-5"><span class="fas fa-plus-circle"></span> Nuevo proyecto</a>
+  <a href="index.php?id=<?php echo $id_log;?>" class="btn btn-primary float-left mb-5"><span class="fas fa-backspace"> Volver a la página anterior</a>
   </div>
   <div class="col-sm-12">
       <div class="table-responsive">
