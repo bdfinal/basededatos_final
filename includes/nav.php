@@ -20,6 +20,10 @@
       <li class="nav-item">
         <a class="nav-link" href="<?php echo url;?>modulos/status/index.php?id=<?php echo $id_log;?>">Estatus</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo url;?>modulos/dash/index.php?id=<?php echo $id_log;?>">Dashboard</a>
+      </li>
+   
    
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
