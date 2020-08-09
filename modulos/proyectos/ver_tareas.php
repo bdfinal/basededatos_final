@@ -61,11 +61,9 @@ $detallea = $consulta->detalleIdResponsable($id_proyecto, $id_log);
         <th><?php echo$qry1['fecha_inicio'];?></th>
         <th> <?php echo$qry1['fecha_fin']; ?></th>
        <th><?php echo$qry1['estatus'];?></th>
-       <input type="hidden" name="id_proyecto" id="id_proyecto" value="<?php echo $id?>">
-       <th> <a  href="cambiar_estado.php?id=<?php echo$qry1["id_detalle"];?>&id_p=<?php echo$qry1["proyectos_id_proyecto"];?>" >Iniciar tarea </a></th>
-       <th> <a  href="cambiar_estadof.php?id=<?php echo$qry1["id_detalle"];?>&id_p=<?php echo$qry1["proyectos_id_proyecto"];?>">Finalizar tarea </a></th>
-      
-      
+       <th> <a href="cambiar_estado.php?id=<?php echo$qry1["id_detalle"];?>&id_p=<?php echo$qry1["proyectos_id_proyecto"];?>" >Iniciar tarea </a></th>
+       <th> <div id="hidden-div"><a id="funciona" onclick="getElementById('hidden-div').style.display = 'block'" href="cambiar_estadof.php?id=<?php echo$qry1["id_detalle"];?>&id_p=<?php echo$qry1["proyectos_id_proyecto"];?>">Finalizar tarea </a></div></th>
+     
     </td>
         </tr>
      
@@ -80,7 +78,17 @@ $detallea = $consulta->detalleIdResponsable($id_proyecto, $id_log);
 
   </div>
   </div>
+<script>
+   // $('#funciona').hide();
+   var a = document.getElementById('funciona')
+    a.addEventListener('click',hideshow,false);
 
+    function hideshow() {
+        document.getElementById('hidden-div').style.display = 'block'; 
+        this.style.display = 'none'
+
+  }
+</script>
   <?php include("../../includes/script.php")?>
 </body>
 </html>

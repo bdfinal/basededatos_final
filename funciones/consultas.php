@@ -135,10 +135,8 @@ public function editrol($id){
     return $res;
     
 }
-<<<<<<< HEAD
 
 
-=======
 public function estatus7(){
     $qry = 'SELECT id_estatus, nombre_estatus from estatus ';
     $rt = new mysqlfunciones;
@@ -163,7 +161,6 @@ public function allEstatus(){
     
 }
  
->>>>>>> marilu
 
 
 }
