@@ -7,11 +7,14 @@ use consultas_sql\consultas;
 $ejecutar = new mysqlfunciones();
 $consulta= new consultas();
 $session = $ejecutar->usuarioActivo();
-$id=$_GET["id"];
+$id_proyecto=$_GET["id"];
 $id_log=$_SESSION["id"];
-$detalleA = $consulta->detalleIdAsignador($id, $id_log);
-$detallea = $consulta->detalleIdResponsable($id, $id_log);
- 
+$detalleA = $consulta->detalleIdAsignador($id_proyecto, $id_log);
+$detallea = $consulta->detalleIdResponsable($id_proyecto, $id_log);
+ //Ejemplo curso PHP aprenderaprogramar.com
+ $date = date('Y-m-d H:i:s');
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,6 +30,7 @@ $detallea = $consulta->detalleIdResponsable($id, $id_log);
   <div class="container mt-5">
   <div class="row">
   <div class="col-sm-12">
+    
   <a href="../../logout.php" class="btn btn-danger float-right mb-5"><span class="fas fa-sign-out-alt"></span> Cerrar Sesion</a>
   <a href="index.php?id=<?php echo $id_log;?>" class="btn btn-primary float-left mb-5"><span class="fas fa-backspace"> Volver a la página anterior</a>
   </div>
@@ -37,32 +41,36 @@ $detallea = $consulta->detalleIdResponsable($id, $id_log);
     <tr>    
     <th> Tareas<span</th>
     <th> Asignado por</th>
-    <th> Asignado a</th>
     <th> Fecha asignado</th>
+    <th> Fecha inicio</th>
+    <th> Fecha final</th>
     <th> Estado de la tarea</th>
+    <th> Acciones</th>
+    <th></th>
     </tr>
     </thead>
     <tbody>
     <?php
     while ($qry1=mysqli_fetch_array($detalleA)){ 
         ?>
+    
         <tr>
         <th><?php echo$qry1['tarea'];?></th>
-        <th><?php echo$qry1['asignador'];?></th>
-        <?php while($qry2=mysqli_fetch_array($detallea)){
-            ?>
-            <th><?php echo$qry2['responsable'];?></th>
-        <?php
-    }
-    ?>
-        <th><?php echo$qry1['fecha_asignacion'];?></>
-        <th><?php echo$qry1['estatus'];?></th>
-        
-        
-
+        <th><?php echo$qry1['asignador'];?></th>    
+        <th><?php echo$qry1['fecha_asignacion'];?></th>
+        <th><?php echo$qry1['fecha_inicio'];?></th>
+        <th> <?php echo$qry1['fecha_fin']; ?></th>
+       <th><?php echo$qry1['estatus'];?></th>
+       <input type="hidden" name="id_proyecto" id="id_proyecto" value="<?php echo $id?>">
+       <th> <a  href="cambiar_estado.php?id=<?php echo$qry1["id_detalle"];?>&id_p=<?php echo$qry1["proyectos_id_proyecto"];?>" >Iniciar tarea </a></th>
+       <th> <a  href="cambiar_estadof.php?id=<?php echo$qry1["id_detalle"];?>&id_p=<?php echo$qry1["proyectos_id_proyecto"];?>">Finalizar tarea </a></th>
+      
+      
     </td>
         </tr>
+     
         <?php
+        
     }
         ?>
     </tbody>
@@ -73,7 +81,6 @@ $detallea = $consulta->detalleIdResponsable($id, $id_log);
   </div>
   </div>
 
-  
   <?php include("../../includes/script.php")?>
 </body>
 </html>

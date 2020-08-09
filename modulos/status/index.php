@@ -6,7 +6,7 @@ use funciones\mysqlfunciones;
 use consultas_sql\consultas;
 $ejecutar = new mysqlfunciones();
 $consulta= new consultas();
-$usr = $consulta->usr();
+$estatus = $consulta->estatus7();
 $session = $ejecutar->usuarioActivo();
 $id_log=$_SESSION["id"];
  
@@ -18,7 +18,7 @@ $id_log=$_SESSION["id"];
   
    ?>
 
-    <title>Document</title>
+    <title>Estatus</title>
 </head>
 <body>
 <?php include("../../includes/nav.php")?>
@@ -26,31 +26,33 @@ $id_log=$_SESSION["id"];
   <div class="container mt-5">
   <div class="row">
   <div class="col-sm-12">
-  <a href="../../cerrarsesion.php" class="btn btn-danger float-right mb-5">Cerrar Sesion</a>
-  <a href="formularios_usuarios.php" class="btn btn-primary float-left mb-5">Nuevo</a>
+  <a href="../../index.php" class="btn btn-danger float-right mb-5"><span class="fas fa-sign-out-alt">Cerrar Sesion</a>
+  <a href="formularios_estatus.php" class="btn btn-primary float-left mb-5">Nuevo</a>
   </div>
   <div class="col-sm-12">
       <div class="table-responsive">
       <table class="table table-stripped">
     <thead>
     <tr>    
-    <th> Nombre</th>
+   
     
-    <th>Correo electronico</th>
-    <th>teléfono</th>
-    <th >Acciones</th>
+    <th>ESTATUS</th>
+    <th>ACCIONES</th>
+    
     </tr>
     </thead>
     <tbody>
         <?php
-    while ($mostrar=mysqli_fetch_array($usr)){ //array: nos trae un arreglo de datos por posiciones, //2: arreglo asociativo podemos ver los campos de los bd
+    while ($mostrar=mysqli_fetch_array($estatus)){ //array: nos trae un arreglo de datos por posiciones, //2: arreglo asociativo podemos ver los campos de los bd
         ?>
         <tr>
-        <th><?php echo$mostrar['nombre'];?></th>
-        <th><?php echo$mostrar['correo_usr'];?></th>
-        <th><?php echo$mostrar['telefono'];?></th>
-        <td><a href="fedicion_usuario.php?id=<?php echo $mostrar['id_usuario']; ?>">Editar</a>
-        <a href="eliminar_usuarios.php?id=<?php echo $mostrar['id_usuario']; ?>">Eliminar</a>
+       
+        <th><?php echo$mostrar['nombre_estatus'];?></th>
+        
+        <td><a href="edicion_estatus.php?id=<?php echo $mostrar['id_estatus']; ?>">Editar</a>
+        <a href="eliminar_status.php?id=<?php echo $mostrar['id_estatus']; ?>">Eliminar</a>
+    
+     
     
     </td>
        

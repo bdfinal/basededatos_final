@@ -30,7 +30,6 @@ class mysqlfunciones{
             $_SESSION["login"]= true;
             $_SESSION["id"] = $fila["id_usuario"];
             $_SESSION["nombre"] = $fila["nombre_usr"];
-            $_SESSION["estado"] = $fila["Estado"];
             $_SESSION["id_rol"] = $fila["roles_id_rol"];
             $respuesta = 1;
         } else {

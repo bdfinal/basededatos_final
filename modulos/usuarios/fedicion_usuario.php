@@ -42,16 +42,18 @@ $consulta = new consultas();
         </div>
         <div class="form-group">
         <label class="left full">Contraseña</label>
-        <input type="password" name="contraseña" id="contraseña" class="form-control" required placeholder="Ingresa una contraseña nueva" />
+        <input type="password" name="contraseña" id="contraseña" class="form-control" required  value="<?php echo$fila["password_usr"]?>"/>
         </div>
         <div class="form-group">
         <label class="left full">Rol</label>
         <select name="id_rol" id="id_rol" class="form-control"required value="<?php echo$fila["nombre_rol"]?>">
-        <option value = "0">Selecciona una opción</option>
        <?php
-        while ($qry=mysqli_fetch_array($rol )){ ?>      
-           <option value = "<?php echo $qry["id_rol"];?>"><?php echo $qry["nombre_rol"]?></option>
-           <?php }?>
+        while ($qry=mysqli_fetch_array($rol )){ 
+           ?>      
+          <option value="<?php echo $qry["id_rol"] ?>" <?php if ($fila["roles_id_rol"]==$qry["id_rol"]){ ?> selected="selected" <?php } ?>><?php echo $qry["nombre_rol"]; ?></option>
+           <?php 
+         }
+         ?>
         </select>
         </div>   
     <div class="form-group">
