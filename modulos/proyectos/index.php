@@ -41,8 +41,8 @@ $val_usr=$_SESSION["id_rol"];
        <h5 class="card-title text-center"><?php echo $mostrar["nombre_proyecto"]?></h5>
      
          
-          <a  id="a_admin"  href="ver_tareas.php?id=<?php echo $mostrar['id_proyecto']; ?>" class="a-style btn btn-dark"><span class="far fa-clipboard"></span> Ver tareas</a>
-          <a id="a_all" href="edit_project.php?id=<?php echo $mostrar['id_proyecto']?>" class="a-style btn btn-dark float-left"><span class="far fa-edit"></span> Editar proyecto</a>
+          <a  id="a_admin"  href="ver_tareas.php?id=<?php echo $mostrar['proyectos_id_proyecto']; ?>" class="a-style btn btn-dark"><span class="far fa-clipboard"></span> Ver tareas</a>
+          <a id="a_all" href="edit_project.php?id=<?php echo $mostrar['proyectos_id_proyecto']?>" class="a-style btn btn-dark float-left"><span class="far fa-edit"></span> Editar proyecto</a>
 
          
       </div>
