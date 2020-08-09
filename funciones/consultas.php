@@ -5,10 +5,9 @@ use funciones\mysqlfunciones;
  class consultas{
      
 public function projectGet($id){
-    $qry ='SELECT l.*, u.*
-    FROM detalle l 
-    inner join proyectos u on l.proyectos_id_proyecto = u.id_proyecto
-    WHERE id_responsable=' .$id;
+    $qry ='SELECT  DISTINCT proyectos_id_proyecto, d.nombre_proyecto FROM detalle 
+    INNER JOIN proyectos d on id_proyecto = proyectos_id_proyecto
+    where id_responsable='.$id;
     $rt = new mysqlfunciones;
     $res = $rt->ejecutar($qry);
     return $res;
@@ -136,8 +135,35 @@ public function editrol($id){
     return $res;
     
 }
+<<<<<<< HEAD
 
 
+=======
+public function estatus7(){
+    $qry = 'SELECT id_estatus, nombre_estatus from estatus ';
+    $rt = new mysqlfunciones;
+    $res = $rt->ejecutar($qry);
+    return $res;
+    
+}
+public function editEstatus($id){
+    $qry = 'SELECT * FROM estatus 
+    WHERE id_estatus='.$id;
+    $rt = new mysqlfunciones;
+    $res = $rt->ejecutar($qry);
+    return $res;
+    
+}
+
+public function allEstatus(){
+    $qry = 'SELECT * FROM estatus';
+    $rt = new mysqlfunciones;
+    $res = $rt->ejecutar($qry);
+    return $res;
+    
+}
+ 
+>>>>>>> marilu
 
 
 }

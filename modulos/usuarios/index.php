@@ -26,8 +26,8 @@ $id_log=$_SESSION["id"];
   <div class="container mt-5">
   <div class="row">
   <div class="col-sm-12">
-  <a href="../../index.php" class="btn btn-danger float-right mb-5"><span class="fas fa-sign-out-alt">Cerrar Sesion</a>
-  <a href="formularios_usuarios.php" class="btn btn-primary float-left mb-5"><span class="fas fa-plus-circle">Nuevo</a>
+  <a href="../../index.php" class="btn btn-danger float-right mb-5"><span class="fas fa-sign-out-alt"> Cerrar Sesion</a>
+  <a href="formularios_usuarios.php" class="btn btn-primary float-left mb-5"><span class="fas fa-plus-circle"> Nuevo</a>
   </div>
   <div class="col-sm-12">
       <div class="table-responsive">
