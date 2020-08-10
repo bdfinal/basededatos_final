@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include_once("../../funciones/funciones.php");
 include_once("../../funciones/bd.php");
 include_once("../../funciones/consultas.php");
@@ -28,7 +28,7 @@ $usuario=$_SESSION["id"];
                 </div>
                 <div class="form-group">
                     <label class="left full">Fecha de creación</label>
-                    <input type="datetime" name="fecha_creacion" id="fecha_creacion" class="form-control"/>
+                    <input type="datetime-local" name="fecha_creacion" id="fecha_creacion" class="form-control"/>
                     
                 </div>
             
