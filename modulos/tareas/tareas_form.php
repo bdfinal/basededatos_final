@@ -1,4 +1,5 @@
 <?php
+
 include_once("../../funciones/funciones.php");
 include_once("../../funciones/bd.php");
 include_once("../../funciones/consultas.php");
@@ -6,7 +7,7 @@ use funciones\mysqlfunciones;
 use consultas_sql\consultas;
 $ejecutar = new mysqlfunciones();
 $consultas = new consultas();
-session_start();
+$session = $ejecutar->usuarioActivo();
 $usuario=$_SESSION["id"];
 $session = $ejecutar->usuarioActivo();
 ?>
@@ -28,7 +29,8 @@ $session = $ejecutar->usuarioActivo();
                 </div>
                 <div class="form-group">
                     <label class="left full">Fecha de creación</label>
-                    <input type="datetime" name="fecha_creacion" id="fecha_creacion" class="form-control"/>
+                    <input type="datetime-local" name="fecha_creacion" id="fecha_creacion" class="form-control"/>
+                    
                 </div>
             
                 <div class="form-group">

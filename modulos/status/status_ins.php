@@ -1,21 +1,22 @@
-<?php 
+<?php
 session_start();
 include_once("../../funciones/funciones.php");
 include_once("../../funciones/bd.php");
 
 use funciones\mysqlfunciones;
 $ejecutar = new mysqlfunciones();
-
-
-
-$log_name=$_SESSION["nombre"];
 $id_log=$_SESSION["id"];
-$id = $_GET["id"];
-$qry= "DELETE FROM estatus WHERE id_estatus = $id";
+$nombre = $_REQUEST["nombre_estatus"];
+
+
+$qry="insert into estatus (nombre_estatus) values ('$nombre')";
 $ejecucion = $ejecutar->ejecutar($qry);
 
 $qry2="INSERT INTO logs(accion_log, descripcion_log, fuente_log, responsable_log)
-VALUES ('DELETE',CONCAT('Se ha eliminado un registro en la tabla estatus'), ' estatus', ' $id_log')";
+VALUES ('INSERT',CONCAT('Se ha insertado un nuevo registro en la tabla tareas'), ' tareas', ' $id_log')";
 $ejecucion = $ejecutar->ejecutar($qry2);
+
 header("Location: index.php")
+
 ?>
+
