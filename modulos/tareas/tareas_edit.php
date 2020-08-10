@@ -7,7 +7,6 @@
  $ejecutar = new mysqlfunciones();
  $consultas = new consultas();
  $session = $ejecutar->usuarioActivo();
-
  $usuario= $_SESSION["id"]; 
  $id = $_GET['id'];
  $tareas = $consultas->tareasId($id);
