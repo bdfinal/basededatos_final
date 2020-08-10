@@ -16,7 +16,7 @@ $ejecucion = $ejecutar->ejecutar($qry);
 
 
 $qry2="INSERT INTO logs(accion_log, descripcion_log, fuente_log, responsable_log)
-VALUES ('UPDATE',CONCAT('Se ha modificado un  registro en la tabla proyectos), ' proyectos', ' $id_log')";
+VALUES ('UPDATE',CONCAT('Se ha modificado un  registro en la tabla proyectos'), ' proyectos', ' $id_log')";
 $ejecucion = $ejecutar->ejecutar($qry2);
 
 header("Location: all_project.php")
