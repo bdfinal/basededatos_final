@@ -6,10 +6,9 @@ use funciones\mysqlfunciones;
 use consultas_sql\consultas;
 $ejecutar = new mysqlfunciones();
 $consulta= new consultas();
-$estatus = $consulta->allProject();
 $session = $ejecutar->usuarioActivo();
 $id_log=$_SESSION["id"];
- 
+$estatus = $consulta->projectGet($id_log);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,15 +44,25 @@ $id_log=$_SESSION["id"];
     while ($mostrar=mysqli_fetch_array($estatus)){ //array: nos trae un arreglo de datos por posiciones, //2: arreglo asociativo podemos ver los campos de los bd
         ?>
         <tr>
-       
+       <?php
+       $consulta= new consultas();
+       $id_proyecto=$mostrar['proyectos_id_proyecto'];
+       $horas = $consulta->duracionP($id_proyecto, $id_log);
+       ?>
         <th><?php echo$mostrar['nombre_proyecto'];?></th>
+        <?php while($qry=mysqli_fetch_array($horas)){
+            $tiempo_en_segundos=$qry['total'];
+            $hora = floor($tiempo_en_segundos / 3600);
+            $minutos = floor(($tiempo_en_segundos - ($hora * 3600)) / 60);
+            $segundos = $tiempo_en_segundos - ($hora * 3600) - ($minutos * 60);
+         ?>
+       
+        <th><?php echo'El proyecto duro un total de: '. $hora.' horas ' .$minutos.' minutos '. $segundos.' segundos';?></th>
+        <?php
+    }
+    ?>
         <td>
-        <?php 
-            date_default_timezone_set("America/Mexico_City");
-            $fecha_actual=date("Y-m-d H:i:s");
-            print"$fecha_actual";
-        ?>
-    
+        
     </td>
     
     </td>
@@ -69,3 +78,5 @@ $id_log=$_SESSION["id"];
 
   </div>
   </div>
+</body>
+</html>
