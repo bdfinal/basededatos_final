@@ -32,11 +32,11 @@
   <div class="col-sm-12">
 
   <a href="../../logout.php" class="btn btn-danger float-right mb-5"><span class="fas fa-sign-out-alt"> Cerrar Sesion</a>
-  <a href="tareas_form.php" class="btn btn-primary float-left mb-5"><span class="fas fa-plus-circle"> Crear tarea</a>
+  <a href="tareas_form.php" class="btn btn-primary  mb-5"><span class="fas fa-plus-circle"> Crear tarea</a>
       <?php 
       
       if ($rol == 2){?>
-    <a href="asignar_tarea.php" class="btn btn-primary float-left mb-5 ml-5"><span class="fas fa-plus-circle"> Asignar tarea</a>
+    <a href="asignar_tarea.php" class="btn btn-primary  mb-5 ml-5"><span class="fas fa-plus-circle"> Asignar tarea</a>
   </div>
       <?php 
       }
@@ -62,8 +62,8 @@
             <td><?php echo $fila["tarea"]; ?></td>
             <td><?php echo $fila["fecha_asignacion"]; ?></td>
             <td><?php echo $fila["asignador"]; ?></td>
-            <td><a href="tareas_edit.php?id=<?php echo $fila["id_tarea"]; ?>">Editar</a>
-            <a href="tareas_del.php?id=<?php echo $fila["id_tarea"]; ?>; ?>">Eliminar</a>
+            <td><a href="tareas_edit.php?id=<?php echo $fila["tareas_id_tarea"]; ?>">Editar</a>
+            <a href="tareas_del.php?id=<?php echo $fila["tareas_id_tarea"];?>">Eliminar</a>
             </td>
        </tr>
         <?php } ?>
@@ -74,7 +74,10 @@
 
   </div>
   </div>
-
+<script>
+ 
+ 
+    </script>
   
   <?php include("../../includes/script.php")?>
 </body>

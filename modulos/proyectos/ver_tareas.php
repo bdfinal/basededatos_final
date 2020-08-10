@@ -53,7 +53,7 @@ $detallea = $consulta->detalleIdResponsable($id_proyecto, $id_log);
     <?php
     while ($qry1=mysqli_fetch_array($detalleA)){ 
         ?>
-    
+         
         <tr>
         <th><?php echo$qry1['tarea'];?></th>
         <th><?php echo$qry1['asignador'];?></th>    
@@ -61,11 +61,23 @@ $detallea = $consulta->detalleIdResponsable($id_proyecto, $id_log);
         <th><?php echo$qry1['fecha_inicio'];?></th>
         <th> <?php echo$qry1['fecha_fin']; ?></th>
        <th><?php echo$qry1['estatus'];?></th>
-       <input type="hidden" name="id_proyecto" id="id_proyecto" value="<?php echo $id?>">
-       <th> <a  href="cambiar_estado.php?id=<?php echo$qry1["id_detalle"];?>&id_p=<?php echo$qry1["proyectos_id_proyecto"];?>" >Iniciar tarea </a></th>
-       <th> <a  href="cambiar_estadof.php?id=<?php echo$qry1["id_detalle"];?>&id_p=<?php echo$qry1["proyectos_id_proyecto"];?>">Finalizar tarea </a></th>
+
+      <?php $estado= $qry1['estatus_id_estatus'];
       
-      
+      if($estado==1){
+      ?>
+        <th> <a type="hidde"href="cambiar_estado.php?id=<?php echo$qry1["id_detalle"];?>&id_p=<?php echo$qry1["proyectos_id_proyecto"];?>" >Iniciar tarea </a></th>
+      <?php
+    }elseif($estado==2){
+    ?>
+       <th><a id="funciona" href="cambiar_estadof.php?id=<?php echo$qry1["id_detalle"];?>&id_p=<?php echo$qry1["proyectos_id_proyecto"];?>">Finalizar tarea </a></th>
+    <?php
+  }else{
+  ?>
+  <th><p>Tarea finalizada</p></th>
+
+  <?php
+}?>
     </td>
         </tr>
      
@@ -80,7 +92,17 @@ $detallea = $consulta->detalleIdResponsable($id_proyecto, $id_log);
 
   </div>
   </div>
+<script>
+   // $('#funciona').hide();
+   var a = document.getElementById('funciona')
+    a.addEventListener('click',hideshow,false);
 
+    function hideshow() {
+        document.getElementById('hidden-div').style.display = 'block'; 
+        this.style.display = 'none'
+
+  }
+</script>
   <?php include("../../includes/script.php")?>
 </body>
 </html>

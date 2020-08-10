@@ -10,6 +10,7 @@ $session = $ejecutar->usuarioActivo();
 $id_log=$_SESSION["id"];
 $logs = $consulta->logsId($id_log);
 
+//print_r($_SESSION);
 ?>
 
 
@@ -42,9 +43,9 @@ $logs = $consulta->logsId($id_log);
     </tr>
     </thead>
     <tbody>
-        <?php
-            while($fila = mysqli_fetch_array($logs))  {          
-              
+    <?php
+           while($fila =  mysqli_fetch_array($logs)){
+            
         ?>
         <tr>
             <td><?php echo $fila["nombre"]; ?></td>

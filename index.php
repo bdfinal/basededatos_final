@@ -26,7 +26,7 @@
             </div>
         </div>
     </div>
-<input 
+
 
 <?php include_once('includes/script.php');?>
 </body>

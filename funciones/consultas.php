@@ -39,6 +39,15 @@ public function detalleIdAsignador($id_p, $id_r){
     return $res;
     
 }
+public function duracionP($id_p, $id_r){
+    $qry="SELECT
+    SUM(TIMESTAMPDIFF(SECOND,fecha_inicio,fecha_fin)) as total
+    FROM detalle where proyectos_id_proyecto=$id_p and id_responsable=$id_r";
+    $base = new mysqlfunciones();
+    $res = $base->ejecutar($qry);
+    return $res;
+    
+}
 
 public function detalleIdResponsable($id_p, $id_r){
     $qry="select s.*, c.nombre_usr as responsable
@@ -102,6 +111,7 @@ public function tareasIdusr($id){
     return $res;
     
 }
+
 public function rol(){
     $qry = 'SELECT * FROM roles';
     $rt = new mysqlfunciones;
@@ -135,6 +145,8 @@ public function editrol($id){
     return $res;
     
 }
+
+
 public function estatus7(){
     $qry = 'SELECT id_estatus, nombre_estatus from estatus ';
     $rt = new mysqlfunciones;

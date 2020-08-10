@@ -5,3 +5,11 @@
 .card-body .a-style {
     margin: 0 6px;
 }
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
