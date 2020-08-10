@@ -7,7 +7,6 @@
  $ejecutar = new mysqlfunciones();
  $consultas = new consultas();
  $session = $ejecutar->usuarioActivo();
-
  $usuario= $_SESSION["id"]; 
  $id = $_GET['id'];
  $tareas = $consultas->tareasId($id);
@@ -34,7 +33,7 @@
      </div>
       <div class="form-group">
       <label class="left full">Fecha</label>
-      <input type="date" name="fecha_creacion" id="fecha_creacion" class="form-control" required value="<?php echo $fila["fecha_creacion"]?>"/>
+      <input type="datetime" name="fecha_creacion" id="fecha_creacion" class="form-control" required value="<?php echo $fila["fecha_creacion"]?>"/>
       </div> 
     <div class="form-group">
     <input type="submit" value="Guardar" class="btn btn-success">

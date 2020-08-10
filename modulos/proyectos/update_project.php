@@ -7,7 +7,7 @@ use funciones\mysqlfunciones;
 $ejecutar = new mysqlfunciones();
 $id = $_POST["id"];
 $nombre =$_POST["nombre"];
-
+$id_log=$_SESSION["id"];
 
 $qry= "UPDATE proyectos SET
 nombre_proyecto='$nombre'
