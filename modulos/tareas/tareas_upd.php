@@ -9,7 +9,7 @@ $id = $_POST["id_tarea"];
 $nombre =$_POST["nombre_tarea"];
 $fecha = $_POST["fecha_creacion"];
 $usuario =$_POST["usuarios_id_usuario"];
-
+$id_log=$_SESSION["id"];
 
 $qry= "UPDATE tareas SET
 nombre_tarea='$nombre',

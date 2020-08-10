@@ -5,6 +5,7 @@ include_once("../../funciones/bd.php");
 use funciones\mysqlfunciones;
 $ejecutar = new mysqlfunciones();
 $id = $_GET['id'];
+$id_log=$_SESSION["id"];
     
     $qry = "DELETE FROM tareas
     WHERE id_tarea='$id'";
