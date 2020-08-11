@@ -9,6 +9,7 @@ $ejecutar = new mysqlfunciones();
 $consultas = new consultas();
 $session = $ejecutar->usuarioActivo();
 $usuario=$_SESSION["id"];
+$session = $ejecutar->usuarioActivo();
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -10,6 +10,7 @@
  $session = $ejecutar->usuarioActivo();
  $id_log=$_SESSION["id"];
  $tareas = $consultas->tareasIdusr($id_log);
+ $tareacreada=$consultas->tareascreateusr($id_log);
  $rol=$_SESSION["id_rol"];
 
  
@@ -45,6 +46,9 @@
       <div class="table-responsive">
       <table class="table table-stripped">
     <thead>
+      <tr>
+        <th>Tareas Asignadas</th>
+      </tr>
     <tr>    
         <th>Nombre</th>
         <th>Fecha de creación</th>
@@ -66,7 +70,39 @@
             <a href="tareas_del.php?id=<?php echo $fila["tareas_id_tarea"];?>">Eliminar</a>
             </td>
        </tr>
+       
         <?php } ?>
+
+    </tbody>
+
+    <thead>
+      <tr>
+        <th>Tareas Creadas</th>
+      </tr>
+    <tr>    
+        <th>Nombre</th>
+        <th>Fecha de creación</th>
+        <th>Creado por:</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+        
+        <?php
+            while($fila1 = mysqli_fetch_array($tareacreada))            
+            {  
+        ?>
+        <tr>
+            <td><?php echo $fila["nombre_tarea"]; ?></td>
+            <td><?php echo $fila["fecha_creacion"]; ?></td>
+            <td><?php echo $fila["Usuario"]; ?></td>
+            <td><a href="tareasM_edit.php?id=<?php echo $fila["id_tarea"]; ?>">Editar</a>
+            <a href="tareasM_del.php?id=<?php echo $fila["id_tarea"];?>">Eliminar</a>
+            </td>
+       </tr>
+       
+        <?php } ?>
+        
     </tbody>
     </table>
       </div>
