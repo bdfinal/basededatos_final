@@ -84,6 +84,7 @@ public function tareasGet(){
     
 }
 
+
 public function usr(){
     $qry = 'SELECT u.*, r.nombre_rol FROM usuarios u LEFT JOIN roles r on u.roles_id_rol = r.id_rol ';
     $rt = new mysqlfunciones;
@@ -106,6 +107,16 @@ public function tareasIdusr($id){
     left join estatus d on d.id_estatus = s.estatus_id_estatus
     left join tareas e on e.id_tarea = s.tareas_id_tarea
     where id_responsable='.$id;
+    $rt = new mysqlfunciones;
+    $res = $rt->ejecutar($qry);
+    return $res;
+    
+}
+public function tareascreateusr($id){
+    $qry = 'select t.*, u.nombre_usr as Usuario
+    from tareas t
+		INNER JOIN usuarios u on t.usuarios_id_usuario=u.id_usuario
+    where usuarios_id_usuario='.$id;
     $rt = new mysqlfunciones;
     $res = $rt->ejecutar($qry);
     return $res;
@@ -140,6 +151,19 @@ public function editUsr($id){
 public function editrol($id){
     $qry = 'SELECT * FROM roles 
     WHERE id_rol='.$id;
+    $rt = new mysqlfunciones;
+    $res = $rt->ejecutar($qry);
+    return $res;
+    
+}
+public function id_detalle($id){
+    $qry = 'select s.*,  d.nombre_estatus as estatus, e.nombre_tarea as tarea, c.nombre_usr as asignador, u.nombre_usr as nombre_responsable
+    from detalle s 
+    left join usuarios c on c.id_usuario = s.id_asignador
+	left join usuarios u on u.id_usuario = s.id_responsable
+    left join estatus d on d.id_estatus = s.estatus_id_estatus
+    left join tareas e on e.id_tarea = s.tareas_id_tarea
+    where id_detalle='.$id;
     $rt = new mysqlfunciones;
     $res = $rt->ejecutar($qry);
     return $res;
