@@ -9,9 +9,14 @@ $ejecutar = new mysqlfunciones();
 
 $log_id=$_SESSION["id"];
 $log_name=$_SESSION["nombre"];
+$id_log=$_SESSION["id"];
 
 $id = $_GET["id"];
 $qry= "DELETE FROM usuarios WHERE id_usuario = $id";
 $ejecucion = $ejecutar->ejecutar($qry);
+
+$qry2="INSERT INTO logs(accion_log, descripcion_log, fuente_log, responsable_log)
+VALUES ('DELETE',CONCAT('Se ha eliminado un  registro en la tabla usuarios'), ' usuarios', ' $id_log')";
+$ejecucion = $ejecutar->ejecutar($qry2);
 header("Location: index.php")
 ?>
