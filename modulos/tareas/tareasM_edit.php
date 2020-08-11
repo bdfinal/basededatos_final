@@ -5,22 +5,17 @@ include_once("../../funciones/bd.php");
 
 use funciones\mysqlfunciones;
 $ejecutar = new mysqlfunciones();
-$id = $_POST["id_detalle"];
-$tarea =$_POST["id_tarea"];
-$proyecto = $_POST["id_proyecto"];
-$responsable =$_POST["id_responsable"];
-$fecha=$_POST["fecha_asignacion"];
+$id = $_POST["id_tarea"];
+$nombre =$_POST["nombre_tarea"];
+$fecha = $_POST["fecha_creacion"];
+$usuario =$_POST["usuarios_id_usuario"];
 $id_log=$_SESSION["id"];
-$estatus=$_POST["id_estatus"];
 
-$qry= "UPDATE detalle SET
-tareas_id_tarea='$tarea',
-proyectos_id_proyecto='$proyecto',
-id_asignador='$id_log',
-id_responsable='$responsable',
-fecha_asignacion='$fecha',
-estatus_id_estatus='$estatus'
-WHERE id_detalle='$id'";
+$qry= "UPDATE tareas SET
+nombre_tarea='$nombre',
+fecha_creacion='$fecha',
+usuarios_id_usuario='$usuario'
+WHERE id_tarea='$id'";
 $ejecucion = $ejecutar->ejecutar($qry);
 
 

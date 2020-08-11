@@ -48,6 +48,9 @@
     <thead>
       <tr>
         <th>Tareas Asignadas</th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
     <tr>    
         <th>Nombre</th>
@@ -66,9 +69,17 @@
             <td><?php echo $fila["tarea"]; ?></td>
             <td><?php echo $fila["fecha_asignacion"]; ?></td>
             <td><?php echo $fila["asignador"]; ?></td>
-            <td><a href="tareas_edit.php?id=<?php echo $fila["tareas_id_tarea"]; ?>">Editar</a>
-            <a href="tareas_del.php?id=<?php echo $fila["tareas_id_tarea"];?>">Eliminar</a>
+
+
+            <?php if($rol == 2){?>
+            <td><a href="tareas_editAdmin.php?id=<?php echo $fila["id_detalle"]; ?>">Editar</a>
+            <a href="tareas_del.php?id=<?php echo $fila["id_detalle"];?>">Eliminar</a>
             </td>
+            <?php
+            }else{  ?>
+              <td><p>Acciones no disponibles</p></td>
+         <?php   }?>
+          
        </tr>
        
         <?php } ?>
@@ -78,6 +89,9 @@
     <thead>
       <tr>
         <th>Tareas Creadas</th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
     <tr>    
         <th>Nombre</th>
