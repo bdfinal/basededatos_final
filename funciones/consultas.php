@@ -111,6 +111,16 @@ public function tareasIdusr($id){
     return $res;
     
 }
+public function tareascreateusr($id){
+    $qry = 'select t.*, u.nombre_usr as Usuario
+    from tareas t
+		INNER JOIN usuarios u on t.usuarios_id_usuario=u.id_usuario
+    where usuarios_id_usuario='.$id;
+    $rt = new mysqlfunciones;
+    $res = $rt->ejecutar($qry);
+    return $res;
+    
+}
 
 public function rol(){
     $qry = 'SELECT * FROM roles';
