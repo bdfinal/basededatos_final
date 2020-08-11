@@ -10,6 +10,7 @@
  $session = $ejecutar->usuarioActivo();
  $id_log=$_SESSION["id"];
  $tareas = $consultas->tareasIdusr($id_log);
+ $tareacreada=$consultas->tareascreateusr($id_log);
  $rol=$_SESSION["id_rol"];
 
  
@@ -45,6 +46,12 @@
       <div class="table-responsive">
       <table class="table table-stripped">
     <thead>
+      <tr>
+        <th>Tareas Asignadas</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
     <tr>    
         <th>Nombre</th>
         <th>Fecha de creación</th>
@@ -62,11 +69,54 @@
             <td><?php echo $fila["tarea"]; ?></td>
             <td><?php echo $fila["fecha_asignacion"]; ?></td>
             <td><?php echo $fila["asignador"]; ?></td>
-            <td><a href="tareas_edit.php?id=<?php echo $fila["tareas_id_tarea"]; ?>">Editar</a>
-            <a href="tareas_del.php?id=<?php echo $fila["tareas_id_tarea"];?>">Eliminar</a>
+
+
+            <?php if($rol == 2){?>
+            <td><a href="tareas_editAdmin.php?id=<?php echo $fila["id_detalle"]; ?>">Editar</a>
+            <a href="tareas_del.php?id=<?php echo $fila["id_detalle"];?>">Eliminar</a>
+            </td>
+            <?php
+            }else{  ?>
+              <td><p>Acciones no disponibles</p></td>
+         <?php   }?>
+          
+       </tr>
+       
+        <?php } ?>
+
+    </tbody>
+
+    <thead>
+      <tr>
+        <th>Tareas Creadas</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    <tr>    
+        <th>Nombre</th>
+        <th>Fecha de creación</th>
+        <th>Creado por:</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+        
+        <?php
+            while($fila1 = mysqli_fetch_array($tareacreada))            
+            {  
+        ?>
+        <tr>
+            <td><?php echo $fila1["nombre_tarea"]; ?></td>
+            <td><?php echo $fila1["fecha_creacion"]; ?></td>
+            <td><?php echo $fila1["Usuario"]; ?></td>
+            <td><a href="tareasM_edit.php?id=<?php echo $fila1["id_tarea"]; ?>">Editar</a>
+            <a href="tareasM_del.php?id=<?php echo $fila1["id_tarea"];?>">Eliminar</a>
             </td>
        </tr>
+       
         <?php } ?>
+        
     </tbody>
     </table>
       </div>
