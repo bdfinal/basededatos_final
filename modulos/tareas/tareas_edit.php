@@ -24,7 +24,7 @@
    <?php
    $fila = mysqli_fetch_array($tareas);
    ?>
-     <form name="formulario"  action="tareas_upd.php" method="POST">
+     <form name="formulario"  action="tareasM_edit.php" method="POST">
      <div class="form-group">
          <label class="left full">Nombre</label>
          <input type="hidden" name="usuarios_id_usuario" id="usuarios_id_usuario" value="<?php echo $usuario; ?>" class="form-control" />

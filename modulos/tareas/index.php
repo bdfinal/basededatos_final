@@ -37,6 +37,7 @@
       <?php 
       
       if ($rol == 2){?>
+     
     <a href="asignar_tarea.php" class="btn btn-primary  mb-5 ml-5"><span class="fas fa-plus-circle"> Asignar tarea</a>
   </div>
       <?php 
@@ -110,7 +111,7 @@
             <td><?php echo $fila1["nombre_tarea"]; ?></td>
             <td><?php echo $fila1["fecha_creacion"]; ?></td>
             <td><?php echo $fila1["Usuario"]; ?></td>
-            <td><a href="tareasM_edit.php?id=<?php echo $fila1["id_tarea"]; ?>">Editar</a>
+            <td><a href="tareas_edit.php?id=<?php echo $fila1["id_tarea"]?>">Editar</a>
             <a href="tareasM_del.php?id=<?php echo $fila1["id_tarea"];?>">Eliminar</a>
             </td>
        </tr>
